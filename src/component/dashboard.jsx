@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchUsers, createUser, updateUser, deleteUser } from '../api/user';
+import { fetchUsers, createUser, updateUser, deleteUser,clearUser} from '../api/user';
 import UserForm from './userForm';
 import UserList from './userList';
 
@@ -8,7 +8,8 @@ const Dashboard = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    loadUsers();
+    // loadUsers();
+    clearUser();
   }, []);
 
   const loadUsers = async () => {
@@ -22,12 +23,13 @@ const Dashboard = () => {
   };
 
   const handleUpdate = async (user) => {
-    await updateUser(user);
+    await updateUser(user._id, user);
     loadUsers();
     setSelectedUser(null);
   };
 
   const handleDelete = async (id) => {
+    console.log(`Deleting user with id: ${id}`);
     await deleteUser(id);
     loadUsers();
   };

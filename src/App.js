@@ -5,7 +5,7 @@ import Dashboard from './component/dashboard'
 function App() {
   return (
     <Router>
-      <div className="container mx-auto p-4">
+      <div className="ng-grey-950 container mx-auto p-4">
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
           {/* Add more routes here as needed */}
